@@ -38,7 +38,7 @@ body{
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
-	margin-left: 100px;
+	margin-left: 10%;
 }
 
 .img img{
@@ -178,6 +178,7 @@ a:hover{
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
+
 }
 .btn:hover{
 	background-position: right;
