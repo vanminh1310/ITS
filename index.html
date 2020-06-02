@@ -6,15 +6,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link rel="shortcut icon" href="/img/Traffic-Lights.png" />
 </head>
 <body>
 	<img class="wave" src="/img/webtraffic.png">
 	<div class="container">
 		
-		<div class="login-content">
+		<div class="login-content" id="login_div">
 			<form action="index.html">
-				<img src="img/avatar.svg">
+				<img src="img/avatar.png">
 				<h2 class="title">Welcome</h2>
            		<div class="input-div one">
            		   <div class="i">
@@ -22,7 +22,7 @@
            		   </div>
            		   <div class="div">
            		   		<h5>Username</h5>
-           		   		<input type="text" class="input">
+           		   		<input class="input" type="email" id="email_field">
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -31,15 +31,26 @@
            		   </div>
            		   <div class="div">
            		    	<h5>Password</h5>
-           		    	<input type="password" class="input">
+           		    	<input type="password" class="input" id="password_field">
             	   </div>
 				</div>
 				
             	<a href="#">Quên mật khẩu ?</a>
-            	<input type="submit" class="btn" value="Login">
-            </form>
+				<button class="btn" onclick="login()">Login</button>
+
+				
+			</form>
+			
+			
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-auth.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+	<script src="/js/firebase.js"></script>
 </body>
 </html>
