@@ -9,19 +9,24 @@ var firebaseConfig = {
     measurementId: "G-YF04DFHNBT"
   
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-
+// Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
+  console.log(firebase.auth().currentUser)
   function  signIn(){
     var gmail= document.getElementById("email_field");
     var pass = document.getElementById("password_field");
     const login =  auth.signInWithEmailAndPassword(gmail.value, pass.value);
-
-    login.catch(e => alert(e.message));
+     
+    login.catch(e => alert(e.message))
     
-}
+   
+ 
+  }
   
+
+  
+
+    
 
 
