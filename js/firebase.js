@@ -12,7 +12,7 @@ var firebaseConfig = {
 // Initialize Firebase
  firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
-  console.log(firebase.auth().currentUser)
+  
   function  signIn(){
     var gmail= document.getElementById("email_field");
     var pass = document.getElementById("password_field");
@@ -23,7 +23,23 @@ var firebaseConfig = {
    
  
   }
-  
+  auth.onAuthStateChanged(function(user){
+    var user =auth.currentUser;
+    
+	if(user != null){
+      var gmaill =user.email;
+      console.log("mai", gmaill)
+      // window.open('home.html','_self')
+  }
+	else(
+    console.log("khong co gi")
+  )	
+	
+		
+		
+		
+	});
+
 
   
 
