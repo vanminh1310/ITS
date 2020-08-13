@@ -11,23 +11,7 @@ var firebaseConfig = {
   };
 // Initialize Firebase
  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  
-  function  signIn(){
-    var gmail= document.getElementById("email_field");
-    var pass = document.getElementById("password_field");
-    const login =  auth.signInWithEmailAndPassword(gmail.value, pass.value);
-     
-    login.catch(e => alert(e.message))
-    
-   login.then(function (result) {
-     alert("dang nhap thanh cong ")
-     window.open('home.html','_self')
-   })
  
-  }
- 
-		
 
 
 
