@@ -21,8 +21,7 @@ var firebaseConfig = {
     login.catch(e => alert(e.message))
     
    login.then(function (result) {
-     alert("dang nhap thanh cong ")
-     window.open('home.html','_self')
+     window.location.replace('home1.html');
    })
  
   }
