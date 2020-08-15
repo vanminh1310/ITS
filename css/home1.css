@@ -120,16 +120,19 @@ body{
     width: 80px;
   }
   #check:checked~ .card {
-  margin-left: 20vw;
+  margin-left: 40vw;
   }
   
   .content{
     margin-left: 250px;
-    background: url(background.png) no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
     transition: 0.5s;
+    display: flow-root;
+    
+
+
   }
   
   #check:checked ~ .content{
@@ -172,10 +175,11 @@ body{
    /* text-align: center;  */
   transition: 0.5s ease;
   cursor: pointer;
-  margin-top: 50px;
-  margin-left: 18vw;
- 
+
+  margin-left: 5vw;
+  margin-top: 80px;
   width: 250px;
+
 }
 .card-image {
   grid-area: image;
@@ -183,9 +187,9 @@ body{
   background-size: cover;
   border-radius: 100%;
   height: 20vh;
-  width: 10vw;
+  width: 15vw;
   margin-left: 50px;
-  margin-top: 35px;
+  margin-top: 15px;
 }
 
 .card-text {
