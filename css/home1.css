@@ -29,7 +29,7 @@ body{
     background: #19B3D3;
     text-decoration: none;
     float: right;
-    margin-top: -30px;
+    margin-top: -15px;
     margin-right: 40px;
     border-radius: 2px;
     font-size: 15px;
@@ -139,3 +139,16 @@ body{
 .user {
      font-size: 0.8em;
 }                       
+.clock{
+  margin-top: -30px;
+    margin-left: 50%;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.5s;
+    transition-property: background;
+    outline: none;
+    
+	border: none;
+}
