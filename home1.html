@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   </head>
   <body>
+    
 
     <input type="checkbox" id="check">
     <!--header area start-->
@@ -21,11 +22,28 @@
       <div class="clock" id="clock">
 
       </div>
+      
       <div class="right_area">
         <!-- <a href="#" class="logout_btn">Logout</a> -->
         <button class="logout_btn" onclick="logout()">Logout</button>
       </div>
+      <div class="card">
+        <div class="card-image"></div>
+        <div class="card-text">
+          <span class="date">Name</span>
+          <h4>Nguyen Van A</h4>
+          <span class="date">Time</span>
+          <h4>13:00</h4>
+          <span class="date">Location</span>
+          <h3>12323525132</h3>
+        </div>
+        <div class="card-stats">
+          <a class="detail" href="#"><span>Detail</span></a>
+        </div>
+  
+      </div>
     </header>
+    
     <!--header area end-->
     <!--sidebar start-->
     <div class="sidebar">
@@ -43,8 +61,13 @@
       <!-- <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a> -->
     </div>
     <!--sidebar end-->
+  
 
-    <div class="content"></div>
+    <div class="content">
+    
+      </div>
+      
+    </div>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
