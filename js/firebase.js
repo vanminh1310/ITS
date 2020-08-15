@@ -18,7 +18,8 @@ var firebaseConfig = {
     var pass = document.getElementById("password_field");
     const login =  auth.signInWithEmailAndPassword(gmail.value, pass.value);
      
-    login.catch(e => alert(e.message))
+    // login.catch(e => alert(e.message))
+    login.catch(e=> document.getElementById('qmk').innerHTML = e.message)
     
    login.then(function (result) {
      window.location.replace('home1.html');
