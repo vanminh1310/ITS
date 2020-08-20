@@ -16,33 +16,17 @@
       <label for="check">
         <i class="fas fa-bars" id="sidebar_btn"></i>
       </label>
+      
       <div class="left_area">
         <h3>Bus <span>Management</span></h3>
       </div>
-      <div class="clock" id="clock">
-
-      </div>
+      <div class="clock" id="clock"></div>
       
       <div class="right_area">
-        <!-- <a href="#" class="logout_btn">Logout</a> -->
-        <button class="logout_btn" onclick="logout()">Logout</button>
+        <a href="#" class="logout_btn"><i style="float:right;" class="far fa-bell"></i></a>
+        <!-- <button class="logout_btn" onclick="logout()">Logout</button> -->
       </div>
-      <!-- <div class="card">
-        <div class="card-image"></div>
-        <div class="card-text">
-          <span class="date">Name</span>
-          <h4>Nguyen Van A</h4>
-          <span class="date">Time</span>
-          <h4>13:00</h4>
-          <span class="date">Location</span>
-          <h3>12323525132</h3>
-        </div>
-        <div class="card-stats">
-          <a class="detail" href="#"><span>Detail</span></a>
-        </div>
-        
-  
-      </div> -->
+ 
     </header>
     
     <!--header area end-->
@@ -58,6 +42,8 @@
       <a href="OTA.html"><i class="fas fa-upload"></i></i><span>UP OTA</span></a>
       <!-- <a href="#"><i class="fas fa-th"></i><span>Forms</span></a> -->
       <a href="home.html"><i class="fas fa-info-circle"></i><span>About</span></a>
+      <a onclick="logout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+     
       
       <!-- <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a> -->
     </div>
@@ -68,62 +54,98 @@
       <div class="card">
         <div class="card-image"></div>
         <div class="card-text">
-          <span class="date">Name</span>
-          <h4>Nguyen Van A</h4>
-          <span class="date">Time</span>
-          <h4>13:00</h4>
-          <span class="date">Location</span>
-          <h3>12323525132</h3>
-        </div>
-        <div class="card-stats">
-          <a class="detail" href="#"><span>Detail</span></a>
+          <span class="date">Name: <p></p> </span>
+          <span class="date">Time: <p></p></span>
+          <span class="date">Location: <p></p></span>
+          <a id="myBtn" class="about tess fas fa-info-circle"></a>
         </div>
       </div>
+  
       <div class="card">
         <div class="card-image"></div>
         <div class="card-text">
-          <span class="date">Name</span>
-          <h4>Nguyen Van A</h4>
-          <span class="date">Time</span>
-          <h4>13:00</h4>
-          <span class="date">Location</span>
-          <h3>12323525132</h3>
-        </div>
-        <div class="card-stats">
-          <a class="detail" href="#"><span>Detail</span></a>
+          <span class="date">Name: <p></p> </span>
+          <span class="date">Time: <p></p></span>
+          <span class="date">Location: <p></p></span>
+          <a id="myBtn1" class="about tess fas fa-info-circle"></a>
         </div>
       </div>
+
       <div class="card">
         <div class="card-image"></div>
         <div class="card-text">
-          <span class="date">Name</span>
-          <h4>Nguyen Van A</h4>
-          <span class="date">Time</span>
-          <h4>13:00</h4>
-          <span class="date">Location</span>
-          <h3>12323525132</h3>
-        </div>
-        <div class="card-stats">
-          <a class="detail" href="#"><span>Detail</span></a>
+          <span class="date">Name: <p></p> </span>
+          <span class="date">Time: <p></p></span>
+          <span class="date">Location: <p></p></span>
+          <a id="myBtn2" class="about tess fas fa-info-circle"></a>
         </div>
       </div>
+
       <div class="card">
         <div class="card-image"></div>
         <div class="card-text">
-          <span class="date">Name</span>
-          <h4>Nguyen Van A</h4>
-          <span class="date">Time</span>
-          <h4>13:00</h4>
-          <span class="date">Location</span>
-          <h3>12323525132</h3>
-        </div>
-        <div class="card-stats">
-          <a class="detail" href="#"><span>Detail</span></a>
+          <span class="date">Name: <p></p> </span>
+          <span class="date">Time: <p></p></span>
+          <span class="date">Location: <p></p></span>
+          <a id="myBtn3" class="about tess fas fa-info-circle"></a>
         </div>
       </div>
       
       
     </div>
+    <!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn" >Open Modal</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Detail</h2>
+    </div>
+    <div class="modal-body">
+      <p>Name: </p>
+      <p>Time start: </p>
+      <p>Starting position: </p>
+      <p>End Time: </p>
+      <p>End position: </p>
+      <p>Time to make the trip: </p>
+      </div>
+      <div class="getdata">
+        <a style="text-decoration:none;" href="https://docs.google.com/spreadsheets/u/0/">Get Data</a>
+      </div>
+  </div>
+
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Detail</h2>
+    </div>
+    <div class="modal-body">
+      <p>Name: </p>
+      <p>Time start: </p>
+      <p>Starting position: </p>
+      <p>End Time: </p>
+      <p>End position: </p>
+      <p>Time to make the trip: </p>
+      </div>
+      <div class="getdata">
+        <a style="text-decoration:none;" href="https://docs.google.com/spreadsheets/u/0/">Get Data</a>
+      </div>
+  </div>
+
+</div>
+
+<script src="/js/modal.js">
+
+</script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
