@@ -1,69 +1,67 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <!--
+  ArcGIS API for JavaScript, https://js.arcgis.com
+  For more information about the widgets-directions sample, read the original sample description at developers.arcgis.com.
+  https://developers.arcgis.com/javascript/latest/sample-code/widgets-directions/index.html
+  -->
+<title>Directions widget | Sample | ArcGIS API for JavaScript 4.16</title>
+
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
+      html,
+      body,
+      #viewDiv {
         padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
       }
     </style>
-  </head>
-  <body>
-    <div id="map"></div>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.16/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.16/"></script>
+
     <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-      var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/widgets/Directions"
+      ], function (Map, MapView, Directions) {
+        var map = new Map({
+          basemap: "topo-vector"
         });
-        infoWindow = new google.maps.InfoWindow;
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+        var view = new MapView({
+          scale: 123456789,
+          container: "viewDiv",
+          map: map
+        });
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
+        var directionsWidget = new Directions({
+          view: view,
+          // Point the URL to a valid route service that uses an
+          // ArcGIS Online hosted service proxy instead of the default service
+          routeServiceUrl:
+            "https://utility.arcgis.com/usrsvcs/appservices/srsKxBIxJZB0pTZ0/rest/services/World/Route/NAServer/Route_World"
+        });
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+        // Add the Directions widget to the top right corner of the view
+        view.ui.add(directionsWidget, {
+          position: "top-right"
+        });
+      });
     </script>
-    <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe0_zKfODvMK8Otz8hz5LGKNayCECpiZw&callback=initMap">
-    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
   </body>
 </html>
