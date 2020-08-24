@@ -1,67 +1,497 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <!--
-  ArcGIS API for JavaScript, https://js.arcgis.com
-  For more information about the widgets-directions sample, read the original sample description at developers.arcgis.com.
-  https://developers.arcgis.com/javascript/latest/sample-code/widgets-directions/index.html
-  -->
-<title>Directions widget | Sample | ArcGIS API for JavaScript 4.16</title>
+<!DOCTYPE html>
+<html lang="vi-VN">
+    <head id="Head">
+        <!--*********************************************-->
+        <!-- DNN Platform - http://www.dnnsoftware.com   -->
+        <!-- Copyright (c) 2002-2015, by DNN Corporation -->
+        <!--*********************************************-->
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title>Tìm đường
+</title>
+        <meta id="MetaKeywords" name="KEYWORDS" content=",DotNetNuke,DNN"/>
+        <meta id="MetaGenerator" name="GENERATOR" content="DotNetNuke "/>
+        <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW"/>
+        <link href="/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/DesktopModules/iBus_PathFinding/module.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Portals/_default/Skins/NewsTwo/skin.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Portals/_default/Containers/NewsTwo/container.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Portals/0/portal.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Resources/Shared/scripts/cms/Leaflet/leaflet.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Resources/Shared/scripts/cms/Map/L.Search.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Resources/Shared/scripts/cms/Map/L.Control.Locate.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <link href="/Resources/Shared/stylesheets/cms/map.css?cdv=167" type="text/css" rel="stylesheet"/>
+        <script src="/Resources/libraries/jQuery/01_09_01/jquery.js?cdv=167" type="text/javascript"></script>
+        <script src="/Resources/libraries/jQuery-UI/01_11_03/jquery-ui.js?cdv=167" type="text/javascript"></script>
+        <link id="BootstrapCSS" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/NewsTwo/bootstrap/bootstrap.ex.css"/>
+        <link id="NewsTwoSkinBase" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/NewsTwo/common/base.css"/>
+        <link id="NewsTwoSkinBaseEx" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/NewsTwo/common/base.ex.css"/>
+        <link id="NewsTwoSkinCMS" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/NewsTwo/common/cms.css"/>
+        <link id="jquery_ui" rel="stylesheet" type="text/css" href="/Resources/Shared/stylesheets/cms/jquery/jquery-ui.css"/>
+        <link id="jquery_ui_ex" rel="stylesheet" type="text/css" href="/Resources/Shared/stylesheets/cms/jquery/jquery-ui.ex.css"/>
+        <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-120855772-1']);
+            _gaq.push(['_trackPageview']);
 
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            }
+            )();
+        </script>
+        <link rel='SHORTCUT ICON' href='/Portals/0/bus.ico?ver=2016-03-01-150953-520' type='image/x-icon'/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/>
+    </head>
+    <body id="Body">
+        <form method="post" action="/RouteFinding" id="Form" enctype="multipart/form-data">
+            <div class="aspNetHidden">
+                <input type="hidden" name="StylesheetManager_TSSM" id="StylesheetManager_TSSM" value=""/>
+                <input type="hidden" name="ScriptManager_TSM" id="ScriptManager_TSM" value=""/>
+                <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+                <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="XsFKPuffwdQUYNb1E019c1LQQuHWOQ7V1GgsJ/eeT9r0OxBQ+vO2YTglbhNDMU2DXUzOn1w358bYmQajmJgI8af5VrNOL5mEnj8VCz4jxsVtB21Id+sBn5jVD1dc0uhti+rsZdKS0TFL9YqRGF1UJCuOa92Ti8zIpZBDlPhF9rdH+kpV/k7JntPtJg9Ta/6Q1omCOxJUJsYpUrybeMm/hTzfCPZtuSKxxbvUsBeKrcKFwUQOCTmUHQeSzTa3I+82cx6ww/XUidT2t1KAYlK0QiKmXIc="/>
+            </div>
+            <script type="text/javascript">
+                //<![CDATA[
+                var theForm = document.forms['Form'];
+                if (!theForm) {
+                    theForm = document.Form;
+                }
+                function __doPostBack(eventTarget, eventArgument) {
+                    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                        theForm.__EVENTTARGET.value = eventTarget;
+                        theForm.__EVENTARGUMENT.value = eventArgument;
+                        theForm.submit();
+                    }
+                }
+                //]]>
+            </script>
+            <script src="/WebResource.axd?d=pynGkmcFUV0hRwBNLpb9KYiWfivpjbyOzjNIptsXPNfbdaELYKbZR7C82X81&amp;t=637101058445053551" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+                var __cultureInfo = {
+                    "name": "vi-VN",
+                    "numberFormat": {
+                        "CurrencyDecimalDigits": 2,
+                        "CurrencyDecimalSeparator": ",",
+                        "IsReadOnly": false,
+                        "CurrencyGroupSizes": [3],
+                        "NumberGroupSizes": [3],
+                        "PercentGroupSizes": [3],
+                        "CurrencyGroupSeparator": ".",
+                        "CurrencySymbol": "₫",
+                        "NaNSymbol": "NaN",
+                        "CurrencyNegativePattern": 8,
+                        "NumberNegativePattern": 1,
+                        "PercentPositivePattern": 1,
+                        "PercentNegativePattern": 1,
+                        "NegativeInfinitySymbol": "-∞",
+                        "NegativeSign": "-",
+                        "NumberDecimalDigits": 2,
+                        "NumberDecimalSeparator": ",",
+                        "NumberGroupSeparator": ".",
+                        "CurrencyPositivePattern": 3,
+                        "PositiveInfinitySymbol": "∞",
+                        "PositiveSign": "+",
+                        "PercentDecimalDigits": 2,
+                        "PercentDecimalSeparator": ",",
+                        "PercentGroupSeparator": ".",
+                        "PercentSymbol": "%",
+                        "PerMilleSymbol": "‰",
+                        "NativeDigits": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+                        "DigitSubstitution": 1
+                    },
+                    "dateTimeFormat": {
+                        "AMDesignator": "SA",
+                        "Calendar": {
+                            "MinSupportedDateTime": "\/Date(-62135596800000)\/",
+                            "MaxSupportedDateTime": "\/Date(253402275599999)\/",
+                            "AlgorithmType": 1,
+                            "CalendarType": 1,
+                            "Eras": [1],
+                            "TwoDigitYearMax": 2029,
+                            "IsReadOnly": false
+                        },
+                        "DateSeparator": "/",
+                        "FirstDayOfWeek": 1,
+                        "CalendarWeekRule": 0,
+                        "FullDateTimePattern": "dd MMMM yyyy h:mm:ss tt",
+                        "LongDatePattern": "dd MMMM yyyy",
+                        "LongTimePattern": "h:mm:ss tt",
+                        "MonthDayPattern": "dd MMMM",
+                        "PMDesignator": "CH",
+                        "RFC1123Pattern": "ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027",
+                        "ShortDatePattern": "dd/MM/yyyy",
+                        "ShortTimePattern": "h:mm tt",
+                        "SortableDateTimePattern": "yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss",
+                        "TimeSeparator": ":",
+                        "UniversalSortableDateTimePattern": "yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027",
+                        "YearMonthPattern": "MMMM yyyy",
+                        "AbbreviatedDayNames": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+                        "ShortestDayNames": ["C", "H", "B", "T", "N", "S", "B"],
+                        "DayNames": ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"],
+                        "AbbreviatedMonthNames": ["Thg1", "Thg2", "Thg3", "Thg4", "Thg5", "Thg6", "Thg7", "Thg8", "Thg9", "Thg10", "Thg11", "Thg12", ""],
+                        "MonthNames": ["Tháng Giêng", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai", ""],
+                        "IsReadOnly": false,
+                        "NativeCalendarName": "Dương Lịch",
+                        "AbbreviatedMonthGenitiveNames": ["Thg1", "Thg2", "Thg3", "Thg4", "Thg5", "Thg6", "Thg7", "Thg8", "Thg9", "Thg10", "Thg11", "Thg12", ""],
+                        "MonthGenitiveNames": ["Tháng Giêng", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai", ""]
+                    },
+                    "eras": [1, "A.D.", null, 0]
+                };
+                //]]>
+            </script>
+            <script src="/Telerik.Web.UI.WebResource.axd?_TSM_HiddenField_=ScriptManager_TSM&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bSystem.Web.Extensions%2c+Version%3d4.0.0.0%2c+Culture%3dneutral%2c+PublicKeyToken%3d31bf3856ad364e35%3avi-VN%3aad6c4949-7f20-401f-a40f-4d4c52722104%3aea597d4b%3ab25378d2" type="text/javascript"></script>
+            <div class="aspNetHidden">
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334"/>
+                <input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value=""/>
+                <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="uSha2ZR52umZ8kUPq4niqmbYC/NgcaJabXo81M7LpedzBLNkD5TLYTCSOnRCissq+dG33t3xGVSIjaqe3+lS34aGGW/7rOpheaqJA6C+vDH1A3HynEDXp0ekJFObCP1ZoPTvvdAO7L5zTIZ+I9gg/siRv+P2Hp6T2LraOjgPkfDJifUT174IfCH/lKbUN1w6BcOtpA=="/>
+            </div>
+            <script src="/js/dnn.modalpopup.js?cdv=167" type="text/javascript"></script>
+            <script src="/js/dnncore.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/common.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/fulltextSearch.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Leaflet/leaflet.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.Resource.en-us.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.Config.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.Constants.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.PopupBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.MarkerBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.MarkerStop.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.MarkerStopArround.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.PolylineBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.LayerGroupBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/search/L.GeoSearch.Provider.Google.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.Search.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.Control.Locate.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.MapBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/Resources/Shared/scripts/cms/Map/L.RouteMap.js?cdv=167" type="text/javascript"></script>
+            <script src="/DesktopModules/iBus_PathFinding/L.MarkerStopArround.js?cdv=167" type="text/javascript"></script>
+            <script src="/DesktopModules/iBus_PathFinding/L.MapBase.js?cdv=167" type="text/javascript"></script>
+            <script src="/DesktopModules/iBus_PathFinding/polyline.js?cdv=167" type="text/javascript"></script>
+            <script src="/DesktopModules/iBus_PathFinding/addressSearch.js?cdv=167" type="text/javascript"></script>
+            <script src="/DesktopModules/iBus_PathFinding/module.js?cdv=167" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+                Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [], 90, '');
+                //]]>
+            </script>
+            <div class="EasyDNNSkin_NewsTwo">
+                <div class="NewsTwoBackgroundGradient">
+                    <div class="NewsTwoMain">
+                        <div class="header">
+                            <div class="logo">
+                                <a id="dnn_dnnLogo_hypLogo" title="Sở Giao Thông Vận Tải Thành phố Hồ Chí Minh&lt;br />Trung tâm Quản lý giao thông công cộng Thành phố Hồ Chí Minh" href="http://buyttphcm.com.vn/"></a>
+                            </div>
+                            <div class="portalName">
+                                Sở Giao Thông Vận Tải Thành phố Hồ Chí Minh<br/>Trung tâm Quản lý giao thông công cộng Thành phố Hồ Chí Minh
+                    
+                    
+                    
+                
+                            </div>
+                            <div class="login-language-social-container">
+                                <div class="language">
+                                    <div class="language-object">
+                                        <span class="language selected">Tiếng Việt (Việt Nam)</span>
+                                        <span class="language">|</span>
+                                        <span class="language">
+                                            <a href="http://buyttphcm.com.vn/en-us/RouteFinding">English (United States)</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/BU%C3%9DT-TH%C3%80NH-PH%E1%BB%90-170210696464349/" class="facebook" title="Facebook" target="facebook">
+                                        <span>Facebook</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div></div>
+                            <div class="clear"></div>
+                            <nav class="navbar navbar-inverse main-menu">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggle collapsed" aria-expanded="false" aria-controls="navbar" type="button" data-toggle="collapse" data-target="#navbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse" id="navbar" aria-expanded="false" style="height: 1px;">
+                                    <ul class="nav navbar-nav">
+                                        <li class="">
+                                            <a href="http://buyttphcm.com.vn/" class="">Trang chủ</a>
+                                        </li>
+                                        <li class=" dropdown">
+                                            <a href="http://buyttphcm.com.vn/About" class="dropdown-toggle" data-toggle="dropdown">
+                                                Giới thiệu<b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/About_Us">Giới thiệu chung</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Mandate">Chức năng - nhiệm vụ</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/OrgChart">Cơ cấu tổ chức</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="active dropdown">
+                                            <a href="http://buyttphcm.com.vn/Th%C3%B4ng-tin-tuy%E1%BA%BFn" class="dropdown-toggle" data-toggle="dropdown">
+                                                Thông tin tuyến<b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Route">Tuyến</a>
+                                                </li>
+                                                <li class="active">
+                                                    <a href="http://buyttphcm.com.vn/RouteFinding">Tìm đường</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Prediction">Dự báo giờ</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class=" dropdown">
+                                            <a href="http://buyttphcm.com.vn/Tra-cuu-thong-tin" class="dropdown-toggle" data-toggle="dropdown">
+                                                Tra cứu thông tin<b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Tra-cuu-thong-tin/Van-ban">Văn bản</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Tra-cuu-thong-tin/Tuyen-dung">Tuyển dụng</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Tra-c%E1%BB%A9u-th%C3%B4ng-tin/Quy-tr%C3%ACnh-c%E1%BA%A5p-ph%C3%B9-hi%E1%BB%87u-xe-kinh-doanh-v%E1%BA%ADn-t%E1%BA%A3i">Quy trình cấp phù hiệu xe kinh doanh vận tải</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Tra-c%E1%BB%A9u-th%C3%B4ng-tin/%C4%90%C6%B0a-r%C6%B0%E1%BB%9Bc-h%E1%BB%8Dc-sinh">Đưa rước học sinh</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://buyttphcm.com.vn/X%E1%BB%AD-l%C3%BD-vi-ph%E1%BA%A1m" class="">Xử lý vi phạm</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://buyttphcm.com.vn/Feedback" class="">Phản ánh</a>
+                                        </li>
+                                        <li class=" dropdown">
+                                            <a href="http://buyttphcm.com.vn/Ti%E1%BA%BFn-%C4%91%E1%BB%99-gi%E1%BA%A3i-ng%C3%A2n-ti%E1%BB%81n-tr%E1%BB%A3-gi%C3%A1" class="dropdown-toggle" data-toggle="dropdown">
+                                                Tiến độ giải ngân tiền trợ giá<b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Ti%E1%BA%BFn-%C4%91%E1%BB%99-gi%E1%BA%A3i-ng%C3%A2n-ti%E1%BB%81n-tr%E1%BB%A3-gi%C3%A1/Gi%E1%BA%A3i-ng%C3%A2n-ti%E1%BB%81n-tr%E1%BB%A3-gi%C3%A1-xe-bu%C3%BDt">Giải ngân tiền trợ giá xe buýt</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://buyttphcm.com.vn/Ti%E1%BA%BFn-%C4%91%E1%BB%99-gi%E1%BA%A3i-ng%C3%A2n-ti%E1%BB%81n-tr%E1%BB%A3-gi%C3%A1/Gi%E1%BA%A3i-ng%C3%A2n-ti%E1%BB%81n-v%C3%A9-t%E1%BA%ADp-xe-bu%C3%BDt">Giải ngân tiền vé tập xe buýt</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--/.nav-collapse -->
+                            </nav>
+                        </div>
+                        <div class="content-top-wraper">
+                            <div id="dnn_ContentTop">
+                                <div class="DnnModule DnnModule-iBus_PathFinding DnnModule-575">
+                                    <a name="575"></a>
+                                    <div class="eds_containers_NewsTwo eds_templateGroup_default eds_template_Default">
+                                        <h2>
+                                            <span id="dnn_ctr575_dnnTITLE_titleLabel" class="Head">
+                                                <span class="highlight">Đường đi</span>
+                                                bằng xe buýt
+                                            </span>
+                                        </h2>
+                                        <div id="dnn_ctr575_ContentPane">
+                                            <!-- Start_Module_575 -->
+                                            <div id="dnn_ctr575_ModuleContent" class="DNNModuleContent ModiBusPathFindingC">
+                                                <!--CDF(Css|/Resources/Shared/scripts/cms/Leaflet/leaflet.css?cdv=167)-->
+                                                <!--CDF(Css|/Resources/Shared/scripts/cms/Map/L.Search.css?cdv=167)-->
+                                                <!--CDF(Css|/Resources/Shared/scripts/cms/Map/L.Control.Locate.css?cdv=167)-->
+                                                <!--CDF(Css|/Resources/Shared/stylesheets/cms/map.css?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Leaflet/leaflet.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.Resource.en-us.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.Config.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.Constants.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.PopupBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.MarkerBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.MarkerStop.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.MarkerStopArround.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.PolylineBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.LayerGroupBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/search/L.GeoSearch.Provider.Google.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.Search.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.Control.Locate.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.MapBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/Resources/Shared/scripts/cms/Map/L.RouteMap.js?cdv=167)-->
+                                                <!--CDF(Javascript|/DesktopModules/iBus_PathFinding/L.MarkerStopArround.js?cdv=167)-->
+                                                <!--CDF(Javascript|/DesktopModules/iBus_PathFinding/L.MapBase.js?cdv=167)-->
+                                                <!--CDF(Javascript|/DesktopModules/iBus_PathFinding/polyline.js?cdv=167)-->
+                                                <!--CDF(Javascript|/DesktopModules/iBus_PathFinding/addressSearch.js?cdv=167)-->
+                                                <!--CDF(Javascript|/DesktopModules/iBus_PathFinding/module.js?cdv=167)-->
+                                                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places&language=vi&callback=srchInitGoogleService&key=AIzaSyD1J1N5WAfHGtMZZyV7yMcC-PaM5JH0nso" async defer></script>
+                                                <script type="text/javascript" src="Resources/Shared/scripts/cms/Map/L.Resource.vi-VN.js"></script>
+                                                <script type="text/javascript" lang="ja">
+                                                    var RES_BTN_FROM = "Từ đây"
+                                                      , RES_BTN_TO = "Đến đây"
+                                                      , RES_PIN_ON_MAP = "<Điểm chọn trên bản đồ>"
+                                                      , RES_STARTING = "[Điểm xuất phát trên bản đồ]"
+                                                      , RES_DESTINATION = "[Điểm đến trên bản đồ]"
+                                                      , RES_INVALID_MSG = "Xin vui lòng chọn điểm xuất phát và điểm đến."
+                                                      , RES_STARTING_DESTINATION_INVALID_MSG = "Điểm xuất phát hoặc điểm đến không hợp lệ."
+                                                      , RES_STARTING_MUST_DIFF_DESTINATION_MSG = "Điểm xuất phát phải khác điểm đến."
+                                                      , RES_STARTING_COOR = "[Tọa độ điểm xuất phát]"
+                                                      , RES_DESTINATION_COOR = "[Tọa độ điểm đến]"
+                                                      , RES_NOT_FOUND_MSG = "Hệ thống không tìm thấy tuyến phù hợp với yêu cầu."
+                                                      , RES_MINUTE = "{0} phút"
+                                                      , RES_FROM = "Từ"
+                                                      , RES_TO = "Đến"
+                                                      , RES_WALKING = "Đi bộ"
+                                                      , RES_GET_IN = "Lên xe tại trạm"
+                                                      , RES_GET_OFF = "Xuống xe tại trạm"
+                                                      , RES_VARIATION = "Hướng đi"
+                                                      , RESULT_TITLE_ROUTE = "Đi tuyến"
+                                                      , RESULT_TITLE_ROUTES = "Đi các tuyến";
+                                                </script>
+                                                <div class="dnnFormItem">
+                                                    <div>
+                                                        <div id="btnSwap" class="cms-button cms-button-small swap" onclick="return btnSwap_Click();" tabindex="5" title="Chuyển hướng"></div>
+                                                    </div>
+                                                    <div class="input">
+                                                        <input type="text" class="clearable" id="txtDirectFrom" placeholder="<nhập điểm xuất phát hoặc click chọn trên bản đồ>" tabindex="0"/>
+                                                        <br/>
+                                                        <input type="text" class="clearable" id="txtDirectTo" placeholder="<nhập điểm đến hoặc click chọn trên bản đồ>" tabindex="1"/>
+                                                        <br/>
+                                                        <select id="cboRouteNumber" tabindex="2">
+                                                            <option value="1">Chỉ đi 1 tuyến</option>
+                                                            <option value="2" selected="selected">Hành trình tối đa 2 tuyến</option>
+                                                            <option value="3">Hành trình tối đa 3 tuyến</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <div id="btnSearch" class="cms-button cms-button-small search" onclick="return btnSearch_Click();" tabindex="3" title="Tìm đường"></div>
+                                                        <div id="btnClear" class="cms-button cms-button-small clear" onclick="return btnClear_Click();" tabindex="4" title="Nhập lại">
+                                                            <span class="fa fa-times"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="mainDiv">
+                                                    <div id="result"></div>
+                                                    <div class="cms-row-spacing"></div>
+                                                    <div style="height: 400px;" id="map_canvas"></div>
+                                                    <div style="display: none;" id="gMap_canvas"></div>
+                                                </div>
+                                                <input type="hidden" name="dnn$ctr575$View$hdFrom" id="dnn_ctr575_View_hdFrom"/>
+                                                <input type="hidden" name="dnn$ctr575$View$hdFromKey" id="dnn_ctr575_View_hdFromKey"/>
+                                                <input type="hidden" name="dnn$ctr575$View$hdTo" id="dnn_ctr575_View_hdTo"/>
+                                                <input type="hidden" name="dnn$ctr575$View$hdToKey" id="dnn_ctr575_View_hdToKey"/>
+                                            </div>
+                                            <!-- End_Module_575 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="NewsTwoContent">
+                            <div class="EDS_panes-holder">
+                                <div id="dnn_ContentPane" class="EDS_two-column-content DNNEmptyPane"></div>
+                                <div id="dnn_SidebarRight" class="EDS_two-column-sidebar DNNEmptyPane"></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="dnn_BottomContent" class="EDS_bottom-content-pane DNNEmptyPane"></div>
+                            <div class="clear"></div>
+                            <div class="EDS_panes-holder-invert">
+                                <div id="dnn_SidebarLeft" class="EDS_two-column-sidebar DNNEmptyPane"></div>
+                                <div id="dnn_ContentPaneRight" class="EDS_two-column-content DNNEmptyPane"></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="dnn_BottomContent2" class="EDS_bottom-content-pane DNNEmptyPane"></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="content-bottom-wraper">
+                            <div id="dnn_ContentBottom" class="DNNEmptyPane"></div>
+                        </div>
+                        <div class="NewsTwoBottom">
+                            <div class="bottom-wraper">
+                                <div id="dnn_FooterBox1" class="box DNNEmptyPane"></div>
+                                <div id="dnn_FooterBox2" class="box DNNEmptyPane"></div>
+                                <div class="clear768"></div>
+                                <div id="dnn_FooterBox3" class="box DNNEmptyPane"></div>
+                                <div id="dnn_FooterBox4" class="box DNNEmptyPane"></div>
+                                <div class="clear"></div>
+                                <div class="copyright">
+                                    <span id="dnn_dnnCopyright_lblCopyright" class="SkinObject">Bản quyền © Trung tâm Quản lý giao thông công cộng Thành phố Hồ Chí Minh</span>
+                                    <br/>
+                                    <span>
+                                        Phát triển bởi <a href='http://www.fis.com.vn' target='fis'>Công ty Hệ thống Thông tin FPT</a>
+                                    </span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--CDF(Javascript|/Portals/_default/Skins/NewsTwo/bootstrap/bootstrap.min.js?cdv=167)-->
+            <!--CDF(Javascript|/Resources/Shared/scripts/cms/common.js?cdv=167)-->
+            <!--CDF(Javascript|/Resources/Shared/scripts/cms/fulltextSearch.js?cdv=167)-->
+            <script type="text/javascript" lang="ja">
+                var API_URL = 'http://apicms.ebms.vn', GEO_API_URL = 'http://api.thongtingiaothong.vn/v1', CUR_CULTURE = 'vi-vn', DATA_STOPS, DATA_ROUTES;
 
-    <link
-      rel="stylesheet"
-      href="https://js.arcgis.com/4.16/esri/themes/light/main.css"
-    />
-    <script src="https://js.arcgis.com/4.16/"></script>
+                CUR_CULTURE = (CUR_CULTURE == 'vi-vn' ? '' : CUR_CULTURE);
 
-    <script>
-      require([
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/widgets/Directions"
-      ], function (Map, MapView, Directions) {
-        var map = new Map({
-          basemap: "topo-vector"
-        });
+                function redirectTo(url) {
+                    if (url) {
+                        url = "/{0}/{1}".format(CUR_CULTURE, url).replace(new RegExp('//','gi'), '/');
+                        window.location.replace(url);
+                    }
+                }
 
-        var view = new MapView({
-          scale: 123456789,
-          container: "viewDiv",
-          map: map
-        });
+                function tog(v) {
+                    return v ? 'addClass' : 'removeClass';
+                }
+                $(document).on('input', '.clearable', function() {
+                    $(this)[tog(this.value)]('x');
+                }).on('mousemove', '.x', function(e) {
+                    $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+                }).on('touchstart click', '.onX', function(ev) {
+                    ev.preventDefault();
+                    $(this).removeClass('x onX').val('').change();
+                });
 
-        var directionsWidget = new Directions({
-          view: view,
-          // Point the URL to a valid route service that uses an
-          // ArcGIS Online hosted service proxy instead of the default service
-          routeServiceUrl:
-            "https://utility.arcgis.com/usrsvcs/appservices/srsKxBIxJZB0pTZ0/rest/services/World/Route/NAServer/Route_World"
-        });
-
-        // Add the Directions widget to the top right corner of the view
-        view.ui.add(directionsWidget, {
-          position: "top-right"
-        });
-      });
-    </script>
-  </head>
-
-  <body>
-    <div id="viewDiv"></div>
-  </body>
+                $(window).ready(function() {
+                    $('.language .language-object span').each(function() {
+                        var me = $(this)
+                          , html = me.html();
+                        html = html.replace("(Việt Nam)", "");
+                        html = html.replace("(United States)", "");
+                        me.html(html);
+                    });
+                });
+            </script>
+            <input name="ScrollTop" type="hidden" id="ScrollTop"/>
+            <input name="__dnnVariable" type="hidden" id="__dnnVariable" autocomplete="off"/>
+            <script src="/Portals/_default/Skins/NewsTwo/bootstrap/bootstrap.min.js?cdv=167" type="text/javascript"></script>
+        </form>
+        <!--CDF(Javascript|/js/dnncore.js?cdv=167)-->
+        <!--CDF(Javascript|/js/dnn.modalpopup.js?cdv=167)-->
+        <!--CDF(Css|/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=167)-->
+        <!--CDF(Css|/Portals/_default/Skins/NewsTwo/skin.css?cdv=167)-->
+        <!--CDF(Css|/Portals/_default/Containers/NewsTwo/container.css?cdv=167)-->
+        <!--CDF(Css|/DesktopModules/iBus_PathFinding/module.css?cdv=167)-->
+        <!--CDF(Css|/DesktopModules/iBus_PathFinding/module.css?cdv=167)-->
+        <!--CDF(Css|/Portals/0/portal.css?cdv=167)-->
+        <!--CDF(Javascript|/Resources/libraries/jQuery-UI/01_11_03/jquery-ui.js?cdv=167)-->
+        <!--CDF(Javascript|/Resources/libraries/jQuery/01_09_01/jquery.js?cdv=167)-->
+    </body>
 </html>
