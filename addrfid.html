@@ -39,7 +39,7 @@
         <p class="user" style="color: black;" id="user_para"></p>
       </center>
       <a href="home1.html"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-      <a href="maps.html"><i class="fas fa-map"></i></i><span>Maps</span></a>
+      <a href="maps1.html"><i class="fas fa-map"></i></i><span>Maps</span></a>
       <a href="OTA.html"><i class="fas fa-upload"></i></i><span>UP OTA</span></a>
       <!-- <a href="#"><i class="fas fa-th"></i><span>Forms</span></a> -->
       <a href="addrfid.html"><i class="fas fa-plus"></i><span>Add USER</span></a>
@@ -58,7 +58,7 @@
             <div class="addTask">
                 <h3>Thêm thẻ RFID</h3>
                 <input class="inputt" id="inputid" type="text" placeholder="ID">
-                <h6>Mã RFID: 256136242</h6>
+                <h6 id="rfid">Mã RFID: 256136242</h6>
                 <input  class="inputt" id="inputname" type="text" placeholder="Name">
                 <input  class="inputt" id="inputcd" type="text" placeholder="Chuyen di">
                 <button class="btn">Add</button>
@@ -67,21 +67,9 @@
         
       
     </div>
-
-
-
-
-
-</script>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
-<!-- Firebase App is always required and must be first -->
-<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-<!-- Add additional services that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
- <script src="/js/key.js"></script>
- <script></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
+    <script src="/js/addrfid.js"></script>
     
 
   </body>
