@@ -55,17 +55,23 @@
 
     <div class="content">
         <div class="container">
-            <div class="addTask">
-                <h3>Thêm thẻ RFID</h3>
-                <input class="inputt" id="inputid" type="text" placeholder="ID">
-                <h6 id="rfid">Mã RFID: 256136242</h6>
-                <input  class="inputt" id="inputname" type="text" placeholder="Name">
-                <input  class="inputt" id="inputcd" type="text" placeholder="Chuyen di">
-                <button class="btn">Add</button>
-                <p style="color: red;">Đặt thẻ vào hệ thống sẽ tự lấy mã id. Chỉ cần thêm tên và chuyến xe chạy.</p>
-            </div>
-        
+            
+        </div>
       
+    </div>
+    <div  class="addTask">
+      <form id="form" action="/addrfid.html">
+            <h3>Thêm thẻ RFID</h3>
+            <input class="inputt" id="inputid" type="text" placeholder="ID">
+            <h6 id="rfid">Mã RFID: 256136242</h6>
+            <input  class="inputt" id="inputname" type="text" placeholder="Name">
+            <input  class="inputt" id="inputcd" type="text" placeholder="Chuyến đi">
+            
+            <input class="inputt" id="inputsdt" type="text" placeholder="Số điện thoại ">
+
+            <button id="btn_send" class="btn">Add</button>
+            <p style="color: red;">Đặt thẻ vào hệ thống sẽ tự lấy mã id. Chỉ cần thêm tên và chuyến xe chạy.</p>
+          </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
