@@ -19,6 +19,17 @@ red.on('value', function (red) //đọc dữ liệu tu firebase
     console.log(red.val())
     ;})
 
+// thong bao su co 
+var tb_modal = firebase.database().ref().child("tb");
+    tb_modal.on('value',function(tb_modal){
+      var tb= tb_modal.val();
+      if(tb<30){
+        modal.style.display='block';
+      }
+
+    })
+
+
     setInterval(displayclock,500);
     function displayclock(){
       var time = new Date();
