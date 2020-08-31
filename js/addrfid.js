@@ -59,7 +59,9 @@ document.getElementById('btn_send').onclick = function()
 // khai báo biến 
 if( inputsdt.length<1 && inputcd.length<1 && inputname.length<1 && inputid.length<1){
   // kiểm tra xem có dữ liệu không 
-  alert("Unsuccessful");
+  document.getElementById('modal_addrfid_err').style.display='block';
+  document.getElementById('alert').style.display='block';
+  
 }
  else{
   //  có dữ liệu thì guử qua database
@@ -70,7 +72,19 @@ if( inputsdt.length<1 && inputcd.length<1 && inputname.length<1 && inputid.lengt
 
 
   });
-  document.getElementById('form').reset();
-  alert("Success")
+  
+  document.getElementById('modal_addrfid_sc').style.display='block';
+  document.getElementById('alert_sc').style.display='block';
+}
+
+// hiển thị thông báo 
+window.onclick=function(event){
+  if(event.target == modal_addrfid_err){
+  
+    modal_addrfid_err.style.display='none';
+  }
+  if (event.target == modal_addrfid_sc) {
+    modal_addrfid_sc.style.display='none';
+  }
 }
 }

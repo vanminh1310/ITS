@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/home1.css">
     <link rel="stylesheet" href="/css/addrfid.css">
     <link rel="shortcut icon" href="/img/Traffic-Lights.png" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   </head>
   <body>
@@ -27,9 +28,9 @@
         <a href="#" class="logout_btn"><i style="float:right;" class="far fa-bell"></i></a>
         <!-- <button class="logout_btn" onclick="logout()">Logout</button> -->
       </div>
- 
+     
     </header>
-    
+  
     <!--header area end-->
     <!--sidebar start-->
     <div class="sidebar">
@@ -59,8 +60,10 @@
         </div>
       
     </div>
+    
+    
     <div  class="addTask">
-      <form id="form" action="/addrfid.html">
+      
             <h3>Thêm thẻ RFID</h3>
             <input class="inputt" id="inputid" type="text" placeholder="ID">
             <h6 id="rfid">Mã RFID: 256136242</h6>
@@ -71,8 +74,22 @@
 
             <button id="btn_send" class="btn">Add</button>
             <p style="color: red;">Đặt thẻ vào hệ thống sẽ tự lấy mã id. Chỉ cần thêm tên và chuyến xe chạy.</p>
-          </form>
+        
     </div>
+    <div id="modal_addrfid_err" class="modal_addrfid_err">
+      <div id="alert" class="alert">
+        <span class="closebtn" onclick="document.getElementById('modal_addrfid_err').style.display='none';">&times;</span> 
+        <strong>Lỗi!</strong> Bạn cần nhập đầy đủ thông tin. Xin cảm ơn!
+      </div>
+    </div>
+    <div id="modal_addrfid_sc" class="modal_addrfid_sc">
+      <div id="alert_sc" class="alert_sc">
+        <span class="closebtn" onclick="document.getElementById('modal_addrfid_sc').style.display='none';">&times;</span> 
+        <strong>Thêm thẻ thành công! </strong>
+      </div>
+    </div>
+    
+    
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
     <script src="/js/addrfid.js"></script>
