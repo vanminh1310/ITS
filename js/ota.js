@@ -45,4 +45,8 @@ red.on('value', function (red) //đọc dữ liệu tu firebase
       }
       document.getElementById('clock').innerHTML=hrs + ':' + min +':' + sec;
     }
-  
+var modal = document.getElementById('modal_ecall');
+var btn2= document.getElementById('bnt2');
+btn2.onclick = function() {
+      modal.style.display = "none";
+    }

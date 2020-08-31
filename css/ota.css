@@ -1,0 +1,67 @@
+.modal_ecall{
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal_content_ecall{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    height: 50vh;
+    border: 1px solid #888;
+    width: 30%;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    border-radius: 10px;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   
+  }
+.modal_body_ecall{
+    text-align-last: center;
+}
+.img{
+    margin-top: 5vh;
+    height: 80px;
+    width: 100px;
+    margin-bottom: 4vh;
+}
+.btn_ecall{
+    text-align: center;
+    margin-top: 8vh;
+}
+.btn_ecall_ {
+	background-color:#44c767;
+	border-radius:9px;
+	border:2px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	padding:8px 21px;
+	text-decoration:none;
+}
+.btn_ecall_:hover {
+	background-color:#5cbf2a;
+}
+.btn_ecall_:active {
+	position:relative;
+	top:1px;
+}
+.tb{
+    color: red;
+}
+.btn2{
+    margin-left: 5vw;
+}
