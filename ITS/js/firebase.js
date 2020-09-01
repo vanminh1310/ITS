@@ -22,7 +22,7 @@ var firebaseConfig = {
     login.catch(e=> document.getElementById('qmk').innerHTML = e.message)
     
    login.then(function (result) {
-     window.location.replace('home1.html');
+     window.location.replace('html/home1.html');
    })
  
   }
