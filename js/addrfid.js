@@ -56,13 +56,36 @@ document.getElementById('btn_send').onclick = function()
   var inputname = document.getElementById('inputname').value;
   var inputsdt = document.getElementById('inputsdt').value;
   var inputcd = document.getElementById('inputcd').value;
+  
 // khai báo biến 
 if( inputsdt.length<1 && inputcd.length<1 && inputname.length<1 && inputid.length<1){
   // kiểm tra xem có dữ liệu không 
   document.getElementById('modal_addrfid_err').style.display='block';
   document.getElementById('alert').style.display='block';
   
+  
 }
+if(inputid.length<1){
+  document.getElementById('tb_p_id').style.display='block';
+ 
+
+}
+if(inputname.length<1){
+  document.getElementById('tb_p_name').style.display='block';
+  
+}
+if(inputcd.length<1){
+  document.getElementById('tb_p_cd').style.display='block';
+    
+}
+if(inputsdt.length<1){
+  document.getElementById('tb_p_sdt').style.display='block';
+      
+}
+
+//
+
+
  else{
   //  có dữ liệu thì guử qua database
   firebase.database().ref('ID/'+inputid).set({
@@ -75,6 +98,10 @@ if( inputsdt.length<1 && inputcd.length<1 && inputname.length<1 && inputid.lengt
   
   document.getElementById('modal_addrfid_sc').style.display='block';
   document.getElementById('alert_sc').style.display='block';
+  document.getElementById('tb_p_id').style.display='none';
+  document.getElementById('tb_p_name').style.display='none';
+  document.getElementById('tb_p_cd').style.display='none';
+  document.getElementById('tb_p_sdt').style.display='none';
 }
 
 // hiển thị thông báo 

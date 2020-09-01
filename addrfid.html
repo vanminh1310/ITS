@@ -65,16 +65,18 @@
     <div  class="addTask">
       
             <h3>Thêm thẻ RFID</h3>
-            <input class="inputt" id="inputid" type="text" placeholder="ID">
+            <input  onfocus="this.value=''"  class="inputt" id="inputid" type="text" placeholder="ID">
+            <p id="tb_p_id" class="tb_p">Bạn cần điền id <i class="fas fa-exclamation"></i></p>
             <h6 id="rfid">Mã RFID: 256136242</h6>
-            <input  class="inputt" id="inputname" type="text" placeholder="Name">
-            <input  class="inputt" id="inputcd" type="text" placeholder="Chuyến đi">
-            
-            <input class="inputt" id="inputsdt" type="text" placeholder="Số điện thoại ">
-
+            <input onfocus="this.value=''"  class="inputt" id="inputname" type="text" placeholder="Name">
+            <p id="tb_p_name" class="tb_p">Bạn cần điền tên <i class="fas fa-exclamation"></i></p>
+            <input onfocus="this.value=''"  class="inputt" id="inputcd" type="text" placeholder="Chuyến đi">
+            <p id="tb_p_cd" class="tb_p">Bạn cần điền chuyến đi <i class="fas fa-exclamation"></i></p>
+            <input onfocus="this.value=''"  class="inputt" id="inputsdt" type="text" placeholder="Số điện thoại ">
+            <p id="tb_p_sdt" class="tb_p">Bạn cần điền số điện thoại <i class="fas fa-exclamation"></i></p>
             <button id="btn_send" class="btn">Add</button>
             <p style="color: red;">Đặt thẻ vào hệ thống sẽ tự lấy mã id. Chỉ cần thêm tên và chuyến xe chạy.</p>
-        
+      
     </div>
     <div id="modal_addrfid_err" class="modal_addrfid_err">
       <div id="alert" class="alert">

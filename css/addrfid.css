@@ -8,7 +8,7 @@
 	height: auto;
 	width: 35vw;
 	border: 1px solid #888;
-	margin-top: 200px;
+	margin-top: 150px;
 	margin-left: 35vw;
 
 	box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
@@ -128,4 +128,11 @@ h3,h6{
 	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+}
+.tb_p{
+	font-size: 0.8em;
+	color: red;
+	display: none;
+	margin-left: 8vw;
+	font-style: bold;
 }
