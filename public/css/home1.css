@@ -186,7 +186,7 @@ body{
 
 .card-image {
   grid-area: image;
-  background: url(/img/OIP.jpg);
+  background: url(/public/img/OIP.jpg);
   background-size: cover;
   border-radius: 100%;
   height: 20vh;
