@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Bus Management System</title>
-    <link rel="stylesheet" href="/css/home1.css">
-    <link rel="stylesheet" href="/css/ota.css"
-    
-    <link rel="shortcut icon" href="/img/Traffic-Lights.png" /> 
+    <link rel="stylesheet" href="/ITS/css/home1.css">
+    <link rel="shortcut icon" href="/ITS/img/Traffic-Lights.png" /> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css"/>
+ 
+     
   </head>
   <body>
     
@@ -35,16 +36,16 @@
     <!--sidebar start-->
     <div class="sidebar">
       <center>
-        <img src="/img/avatar.png" class="profile_image" alt="">
+        <img src="/ITS/img/avatar.png" class="profile_image" alt="">
         <h4>WECOME</h4>
         <p class="user" style="color: black;" id="user_para"></p>
       </center>
-      <a href="home1.html"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-      <a href="maps1.html"><i class="fas fa-map"></i></i><span>Maps</span></a>
-      <a href="OTA.html"><i class="fas fa-upload"></i></i><span>UP OTA</span></a>
+      <a href="/ITS/html/home1.html"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+      <a href="/ITS/html/maps1.html"><i class="fas fa-map"></i></i><span>Maps</span></a>
+      <a href="/ITS/html/OTA.html"><i class="fas fa-upload"></i></i><span>UP OTA</span></a>
       <!-- <a href="#"><i class="fas fa-th"></i><span>Forms</span></a> -->
-      <a href="addrfid.html"><i class="fas fa-plus"></i></i><span>Add USER</span></a>
-      <a href="home.html"><i class="fas fa-info-circle"></i><span>About</span></a>
+      <a href="/ITS/html/addrfid.html"><i class="fas fa-plus"></i></i><span>Add USER</span></a>
+      <a href="/ITS/html/home.html"><i class="fas fa-info-circle"></i><span>About</span></a>
       <a onclick="logout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
       <!-- <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a> -->
     </div>
@@ -53,38 +54,23 @@
 
     <div class="content">
      
-    
-      
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe width="1480" height="1480" id="gmap_canvas" src="https://maps.google.com/maps?q=H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+          <a href="https://putlocker-is.org"></a>
+        </div>
+        <style>
+        .mapouter{text-align:right;height:1480px;width:1480px;}
+        .gmap_canvas {overflow:hidden;background:none!important;height:1480px;width:1480px;}
+        </style>
+        </div>
       
     </div>
-    <h2 style="color: red;" class="thongbao" id="thongbao"></h2>
-    <div id="modal_ecall" class="modal_ecall">
-      <div class="modal_content_ecall">
-        <div class="modal_body_ecall">
-            <h1 class="tb">Thông báo <i class="fas fa-exclamation"></i>  </h1>
-            <img class="img" src="/img/warring.png">
-           <br>
-            <strong>Xe</strong> 
-            <strong id="name_bus"> 56 </strong>
-            <strong>Đang gặp sự cố tại vị trí </strong>
-            <strong id="local_bus">231325</strong>
-        </div>   
-        <div class="btn_ecall">
-            <button id="bnt1" class="btn_ecall_ btn1">Chi Tiết </button>
-            <button id="bnt2" class="btn_ecall_ btn2">Đóng</button>
-
-        </div>
-
-
-        </div>
-
-
-    </div>
-
-
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
-    <script src="/js/ota.js"></script>
+    <script src="/ITS/js/ota.js"></script>
+    <script src="/ITS/js/maps.js"></script>
+    <script src="https://js.arcgis.com/4.16/"></script>
 
 </body>
 </html>
