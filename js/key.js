@@ -71,5 +71,3 @@ setInterval(displayclock,500);
 //   link.split('.html')[0];
 //   window.history.replaceState( null, null, link );
 
-  var url = "https://its-k59.firebaseapp.com/home1.html";
-  url = url.substring(0, url.lastIndexOf("."));
