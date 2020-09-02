@@ -67,6 +67,9 @@ setInterval(displayclock,500);
     document.getElementById('clock').innerHTML=hrs + ':' + min +':' + sec;
   }
 
-var link = 'https://its-k59.firebaseapp.com/home1.html';
-  link.split('.html')[0];
-  window.history.replaceState( null, null, link );
+// var link = 'https://its-k59.firebaseapp.com/home1.html';
+//   link.split('.html')[0];
+//   window.history.replaceState( null, null, link );
+
+  var url = "https://its-k59.firebaseapp.com/home1.html";
+  url = url.substring(0, url.lastIndexOf("."));
